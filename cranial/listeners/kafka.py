@@ -1,7 +1,7 @@
 from cranial.common import logger
 
 from cranial.listeners import base
-from cranial.messagin.adapters.kafka import get_consumer
+from cranial.messaging.adapters.kafka import get_consumer
 
 log = logger.create('kafka_client',
                     logger.fallback('LISTENERS_LOGLEVEL', 'WARNING'))
@@ -40,7 +40,3 @@ class Listener(base.Listener):
             else:
                 log.info(alert)
             return None
-
-    def resp(self, data=None):
-        """Kafka is one-way communication."""
-        raise Exception('Kafka cannot send responses.')
